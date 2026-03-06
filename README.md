@@ -13,7 +13,7 @@ An interactive single-page guide covering the EV Mode button mod for the 2004–
 
 ## Why?
 
-Honestly just a fun weekend thing. I like cars, I like tinkering with web stuff in my free time, and I had this relic of an HTML page sitting around from like 2008. Figured I'd see how far I could take it with modern tooling while keeping it dead simple — no frameworks, no build step, just files you can open in a browser.
+Honestly just a fun weekend thing. I like cars, I like tinkering with web stuff in my free time, and I found this relic of an HTML page sitting around from like 2008. Figured I'd see how far I could take it with modern tooling while keeping it dead simple — no frameworks, no build step, just files you can open in a browser.
 
 ## Stack
 
