@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prius Gen 2 — EV Mode Button Mod</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+</head>
+
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Animated Background -->
+  <div class="bg-mesh" aria-hidden="true">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav-glass" id="navbar">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-2 text-white font-semibold text-lg tracking-tight no-underline">
+        <span class="text-2xl">⚡</span> EV&nbsp;Mode
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#overview" class="nav-link">Overview</a>
+        <a href="#wiring" class="nav-link">Wiring</a>
+        <a href="#install" class="nav-link">Install</a>
+        <a href="#specs" class="nav-link">Specs</a>
+        <a href="#guide" class="nav-link">User Guide</a>
+      </div>
+      <!-- Mobile menu toggle -->
+      <button id="mobileMenuBtn" class="md:hidden text-white/70 hover:text-white transition p-2" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile dropdown -->
+    <div id="mobileMenu" class="md:hidden hidden px-6 pb-4 space-y-3">
+      <a href="#overview" class="block nav-link">Overview</a>
+      <a href="#wiring" class="block nav-link">Wiring</a>
+      <a href="#install" class="block nav-link">Install</a>
+      <a href="#specs" class="block nav-link">Specs</a>
+      <a href="#guide" class="block nav-link">User Guide</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="hero" class="hero-section relative z-10">
+    <div class="text-center max-w-3xl mx-auto space-y-8">
+      <div class="fade-up stagger-1">
+        <span class="hero-badge">
+          <span class="inline-block w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+          2004 – 2009 Prius (Gen 2)
+        </span>
+      </div>
+      <h1 class="hero-title fade-up stagger-2">EV Mode<br/>Button Mod</h1>
+      <p class="hero-subtitle mx-auto fade-up stagger-3">
+        Unlock the factory-hidden electric-only driving mode on your second-generation Toyota Prius. 
+        A comprehensive guide to the wiring, switch install, and everything in between.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 fade-up stagger-4">
+        <a href="#overview" class="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 font-medium hover:bg-blue-500/30 transition-all no-underline text-sm">
+          Get Started
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+        <a href="#install" class="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-white/5 border border-white/10 text-white/80 font-medium hover:bg-white/10 transition-all no-underline text-sm">
+          View Install Gallery
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DISCLAIMER ========== -->
+  <section class="relative z-10 max-w-4xl mx-auto px-6 -mt-8 mb-20">
+    <div class="warning-banner p-6 fade-up">
+      <div class="flex items-start gap-4 pl-4">
+        <span class="text-2xl mt-0.5 flex-shrink-0">⚠️</span>
+        <div>
+          <h3 class="text-amber-300 font-semibold text-sm uppercase tracking-wider mb-2">Important Safety Disclaimer</h3>
+          <p class="text-white/60 text-sm leading-relaxed">
+            This modification involves your vehicle's high-voltage hybrid system. Improper work can cause serious injury or damage. 
+            This guide is provided for <strong class="text-white/80">educational and academic purposes only</strong>. 
+            Proceed entirely at your own risk and always consult a qualified professional.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OVERVIEW ========== -->
+  <section id="overview" class="relative z-10 max-w-5xl mx-auto px-6 mb-28">
+    <div class="text-center mb-14 space-y-3">
+      <span class="section-label fade-up">
+        <span class="inline-block w-8 h-px bg-blue-500"></span>
+        Overview
+      </span>
+      <h2 class="section-title fade-up">What Is the EV Mode Mod?</h2>
+    </div>
+
+    <div class="glass p-8 md:p-10 fade-up">
+      <div class="space-y-6 text-white/70 leading-relaxed">
+        <p>
+          In many markets outside the US, the Toyota Prius ships with a dedicated <strong class="text-white/90">EV Mode button</strong> 
+          that lets the driver force the car into pure electric operation — perfect for quiet residential areas, parking garages, 
+          and short low-speed trips.
+        </p>
+        <p>
+          The US-spec Gen 2 Prius (2004–2009) has the <strong class="text-white/90">exact same hardware</strong> lurking behind the dash — 
+          Toyota simply left out the button and wiring harness. The mod is straightforward:
+        </p>
+        <div class="glass-subtle p-6 mt-4">
+          <p class="text-center text-lg text-white/90 font-medium">
+            Pull <span class="text-blue-400 font-bold">pin #27</span> on connector 
+            <span class="text-blue-400 font-bold">H14</span> to ground — that's it.
+          </p>
+          <p class="text-center text-white/50 text-sm mt-2">
+            You can do it with a simple toggle switch, the headlight-flash trick, or the factory JDM EV button.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WIRING / PINOUT ========== -->
+  <section id="wiring" class="relative z-10 max-w-5xl mx-auto px-6 mb-28">
+    <div class="text-center mb-14 space-y-3">
+      <span class="section-label fade-up">
+        <span class="inline-block w-8 h-px bg-blue-500"></span>
+        Wiring
+      </span>
+      <h2 class="section-title fade-up">Switch Pinout Reference</h2>
+      <p class="text-white/50 text-sm fade-up">2006 switch &amp; harness — looking at the <em>rear</em> of the harness, clip side up.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 fade-up">
+      <!-- Pinout Diagram Card -->
+      <div class="glass p-8 flex flex-col items-center justify-center">
+        <div class="w-24 h-20 rounded-xl bg-white/5 border border-white/10 grid grid-cols-2 grid-rows-2 gap-2 p-3 mb-6">
+          <div class="rounded bg-amber-400/30 border border-amber-400/50 flex items-center justify-center text-xs font-bold text-amber-300">1</div>
+          <div class="rounded bg-gray-400/30 border border-gray-400/50 flex items-center justify-center text-xs font-bold text-gray-300">2</div>
+          <div class="rounded bg-red-400/30 border border-red-400/50 flex items-center justify-center text-xs font-bold text-red-300">3</div>
+          <div class="rounded bg-blue-400/30 border border-blue-400/50 flex items-center justify-center text-xs font-bold text-blue-300">4</div>
+        </div>
+        <p class="text-white/40 text-xs uppercase tracking-widest">Harness rear view</p>
+      </div>
+
+      <!-- Pin Details -->
+      <div class="pin-grid">
+        <div class="pin-item">
+          <div class="pin-number bg-amber-400/15 text-amber-300">1</div>
+          <div>
+            <p class="text-white/90 font-medium text-sm">Switch Ground</p>
+            <p class="text-white/50 text-xs mt-0.5">Connect to a grounded bolt behind the dash</p>
+          </div>
+        </div>
+        <div class="pin-item">
+          <div class="pin-number bg-gray-400/15 text-gray-300">2</div>
+          <div>
+            <p class="text-white/90 font-medium text-sm">Light Ground</p>
+            <p class="text-white/50 text-xs mt-0.5">Tap into <span class="text-gray-300">gray wire</span> on the dash dimmer</p>
+          </div>
+        </div>
+        <div class="pin-item">
+          <div class="pin-number bg-red-400/15 text-red-300">3</div>
+          <div>
+            <p class="text-white/90 font-medium text-sm">Light +12 V (Rheostat)</p>
+            <p class="text-white/50 text-xs mt-0.5">Tap into <span class="text-red-300">red wire</span> on the dash dimmer</p>
+          </div>
+        </div>
+        <div class="pin-item">
+          <div class="pin-number bg-blue-400/15 text-blue-300">4</div>
+          <div>
+            <p class="text-white/90 font-medium text-sm">Switch Positive → ECU</p>
+            <p class="text-white/50 text-xs mt-0.5">Connect to <span class="text-blue-300">pin 27 on H14</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== INSTALL GALLERY ========== -->
+  <section id="install" class="relative z-10 max-w-5xl mx-auto px-6 mb-28">
+    <div class="text-center mb-14 space-y-3">
+      <span class="section-label fade-up">
+        <span class="inline-block w-8 h-px bg-blue-500"></span>
+        Installation
+      </span>
+      <h2 class="section-title fade-up">Step-by-Step Gallery</h2>
+      <p class="text-white/50 text-sm fade-up">Click any image to enlarge. Hover for details.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="gallery">
+      <!-- Gallery items rendered by JS -->
+    </div>
+  </section>
+
+  <!-- ========== APPROACH COMPARISON ========== -->
+  <section class="relative z-10 max-w-5xl mx-auto px-6 mb-28">
+    <div class="text-center mb-14 space-y-3">
+      <span class="section-label fade-up">
+        <span class="inline-block w-8 h-px bg-blue-500"></span>
+        Methods
+      </span>
+      <h2 class="section-title fade-up">Choose Your Approach</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="glass p-7 space-y-4 fade-up stagger-1">
+        <div class="w-12 h-12 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-xl">💡</div>
+        <h3 class="text-white/90 font-semibold">Headlight Flash</h3>
+        <p class="text-white/50 text-sm leading-relaxed">
+          Free and simple — momentarily flash the high beams to trigger EV mode. Downside: can't use at night without blinding others.
+        </p>
+        <span class="inline-block text-xs text-green-400/80 bg-green-400/10 rounded-full px-3 py-1">Free · Easy</span>
+      </div>
+      <div class="glass p-7 space-y-4 fade-up stagger-2 ring-1 ring-blue-400/20">
+        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-xl">🔘</div>
+        <h3 class="text-white/90 font-semibold">Factory JDM Button</h3>
+        <p class="text-white/50 text-sm leading-relaxed">
+          The OEM illuminated "EV" button from the Japanese-market Prius. Clean look, backlit, purpose-built.
+        </p>
+        <span class="inline-block text-xs text-blue-400/80 bg-blue-400/10 rounded-full px-3 py-1">~$30 · Recommended</span>
+      </div>
+      <div class="glass p-7 space-y-4 fade-up stagger-3">
+        <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-xl">🔧</div>
+        <h3 class="text-white/90 font-semibold">Toggle Switch</h3>
+        <p class="text-white/50 text-sm leading-relaxed">
+          Any momentary SPST switch works. Mount wherever is convenient — simple, cheap, and functional.
+        </p>
+        <span class="inline-block text-xs text-purple-400/80 bg-purple-400/10 rounded-full px-3 py-1">~$5 · DIY</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SPECS ========== -->
+  <section id="specs" class="relative z-10 max-w-5xl mx-auto px-6 mb-28">
+    <div class="text-center mb-14 space-y-3">
+      <span class="section-label fade-up">
+        <span class="inline-block w-8 h-px bg-blue-500"></span>
+        Specifications
+      </span>
+      <h2 class="section-title fade-up">EV Mode at a Glance</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="spec-card fade-up stagger-1">
+        <div class="spec-icon bg-blue-500/10 text-blue-300">🏎️</div>
+        <p class="text-2xl font-bold text-white/90">45 <span class="text-sm font-normal text-white/40">km/h</span></p>
+        <p class="text-white/50 text-xs mt-1">Max speed (~28 mph)</p>
+      </div>
+      <div class="spec-card fade-up stagger-2">
+        <div class="spec-icon bg-green-500/10 text-green-300">🔋</div>
+        <p class="text-2xl font-bold text-white/90">2 <span class="text-sm font-normal text-white/40">km</span></p>
+        <p class="text-white/50 text-xs mt-1">Typical EV range</p>
+      </div>
+      <div class="spec-card fade-up stagger-3">
+        <div class="spec-icon bg-amber-500/10 text-amber-300">🔌</div>
+        <p class="text-2xl font-bold text-white/90">1 <span class="text-sm font-normal text-white/40">wire</span></p>
+        <p class="text-white/50 text-xs mt-1">Pin 27 → Ground</p>
+      </div>
+      <div class="spec-card fade-up stagger-4">
+        <div class="spec-icon bg-purple-500/10 text-purple-300">🔇</div>
+        <p class="text-2xl font-bold text-white/90">0 <span class="text-sm font-normal text-white/40">dB</span></p>
+        <p class="text-white/50 text-xs mt-1">Silent electric drive</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== USER GUIDE (Accordion) ========== -->
+  <section id="guide" class="relative z-10 max-w-4xl mx-auto px-6 mb-28">
+    <div class="text-center mb-14 space-y-3">
+      <span class="section-label fade-up">
+        <span class="inline-block w-8 h-px bg-blue-500"></span>
+        User Guide
+      </span>
+      <h2 class="section-title fade-up">From the Japanese Manual</h2>
+      <p class="text-white/50 text-sm fade-up">Translated operating instructions for the factory EV mode.</p>
+    </div>
+
+    <div class="space-y-3 fade-up" id="accordion">
+      <!-- Accordion: What is EV Mode? -->
+      <div class="glass overflow-hidden">
+        <button class="accordion-trigger" aria-expanded="true" data-accordion>
+          <span class="flex items-center gap-3">
+            <span class="text-lg">⚡</span> What is EV Drive Mode?
+          </span>
+          <span class="accordion-icon">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="accordion-content open">
+          <div class="px-6 pb-6 text-white/60 text-sm leading-relaxed space-y-3">
+            <p>
+              In EV drive mode your vehicle runs like an electric vehicle, using only the electric motor powered by the hybrid battery. 
+              This mode is ideal for driving in residential areas early in the morning or late at night, 
+              and inside covered parking structures — no engine noise, no exhaust gases.
+            </p>
+            <p>Press the switch to turn on electric motor power manually. The EV indicator light illuminates in the instrument cluster. Press again to turn it off.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion: When EV Won't Activate -->
+      <div class="glass overflow-hidden">
+        <button class="accordion-trigger" aria-expanded="false" data-accordion>
+          <span class="flex items-center gap-3">
+            <span class="text-lg">🚫</span> When EV Mode Won't Activate
+          </span>
+          <span class="accordion-icon">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="accordion-content">
+          <div class="px-6 pb-6 text-white/60 text-sm leading-relaxed">
+            <p class="mb-3">The MFD will display a message and a beep will sound if any of these conditions exist:</p>
+            <ul class="space-y-2 list-none">
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-1">✕</span> Hybrid system overheated (hot weather, slope driving, high speed)</li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-1">✕</span> Hybrid system cold (left below 0 °C / 32 °F for a long time)</li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-1">✕</span> Engine still in warm-up cycle</li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-1">✕</span> Battery charge level ≤ 3 bars</li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-1">✕</span> Vehicle speed ≥ 45 km/h (28 mph)</li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-1">✕</span> Heavy throttle or steep incline</li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-1">✕</span> Windshield defroster is running</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion: Auto-Cancellation -->
+      <div class="glass overflow-hidden">
+        <button class="accordion-trigger" aria-expanded="false" data-accordion>
+          <span class="flex items-center gap-3">
+            <span class="text-lg">🔄</span> Automatic Cancellation While Driving
+          </span>
+          <span class="accordion-icon">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="accordion-content">
+          <div class="px-6 pb-6 text-white/60 text-sm leading-relaxed">
+            <p class="mb-3">EV mode will automatically cancel (beep + indicator flashes 3×) if:</p>
+            <ul class="space-y-2 list-none">
+              <li class="flex items-start gap-2"><span class="text-amber-400 mt-1">⚠</span> Battery charge drops to ≤ 2 bars</li>
+              <li class="flex items-start gap-2"><span class="text-amber-400 mt-1">⚠</span> Speed exceeds ~45 km/h (28 mph)</li>
+              <li class="flex items-start gap-2"><span class="text-amber-400 mt-1">⚠</span> Aggressive throttle input or steep grade</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion: Cold Weather Tip -->
+      <div class="glass overflow-hidden">
+        <button class="accordion-trigger" aria-expanded="false" data-accordion>
+          <span class="flex items-center gap-3">
+            <span class="text-lg">❄️</span> Cold-Weather Start Tip
+          </span>
+          <span class="accordion-icon">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="accordion-content">
+          <div class="px-6 pb-6 text-white/60 text-sm leading-relaxed">
+            <p>
+              On cold mornings, the ICE will begin its warm-up cycle roughly 10 seconds after the READY light appears. 
+              During warm-up, EV mode is blocked. <strong class="text-white/80">Tip:</strong> press the EV button 
+              <em>before</em> the engine fires — there's a brief window after READY where EV mode can still be engaged.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion: Pedestrian Safety -->
+      <div class="glass overflow-hidden">
+        <button class="accordion-trigger" aria-expanded="false" data-accordion>
+          <span class="flex items-center gap-3">
+            <span class="text-lg">🚶</span> Pedestrian Safety Caution
+          </span>
+          <span class="accordion-icon">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="accordion-content">
+          <div class="px-6 pb-6 text-white/60 text-sm leading-relaxed">
+            <p>
+              The vehicle is nearly silent in EV mode. Pedestrians, cyclists, and other road users may not hear you approaching. 
+              Drive with extra caution and stay alert to your surroundings at all times.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion: Fuel Economy Note -->
+      <div class="glass overflow-hidden">
+        <button class="accordion-trigger" aria-expanded="false" data-accordion>
+          <span class="flex items-center gap-3">
+            <span class="text-lg">⛽</span> Fuel Economy Note
+          </span>
+          <span class="accordion-icon">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="accordion-content">
+          <div class="px-6 pb-6 text-white/60 text-sm leading-relaxed">
+            <p>
+              The Prius is engineered for optimal fuel economy when the ICE and electric motor work together. 
+              <strong class="text-white/80">Frequent use of EV mode can actually reduce overall efficiency</strong> — 
+              the battery still needs to be recharged by the engine. Use EV mode situationally, not as a default.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="relative z-10 border-t border-white/5 mt-10">
+    <div class="max-w-5xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-white/30 text-sm">Prius Gen 2 EV Mode Guide — For educational purposes only.</p>
+      <p class="text-white/20 text-xs">CTTO · Elite 2026</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+  </button>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+    <img src="" alt="Enlarged view" id="lightboxImg" />
+  </div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // === Gallery Data ===
+    const gallerySteps = [
+      {
+        src: 'images/prius/ev_switch/ev_mode01.jpg',
+        caption: 'Color-coded wires & dimmer taps',
+        step: 1,
+        description: 'Color-coded the harness wires with heat-shrink tubing, then used telephone connectors to tap into the gray and red dimmer wiring.'
+      },
+      {
+        src: 'images/prius/ev_switch/ev_mode02.jpg',
+        caption: 'Dash disassembly overview',
+        step: 2,
+        description: 'Broader view of removed dash pieces. Steering cowl removed to re-route the ECU wire from the headlight stalk.'
+      },
+      {
+        src: 'images/prius/ev_switch/ev_mode06.jpg',
+        caption: 'Switch bay keying slots',
+        step: 3,
+        description: 'The switch bays are keyed with slots. Toyota intends the middle slot, but the outboard position is more accessible.'
+      },
+      {
+        src: 'images/prius/ev_switch/ev_mode03.jpg',
+        caption: 'Trimming the key tab — side 1',
+        step: 4,
+        description: 'Cut off the rectangular locating tab on one side with a utility knife. Clean and easy.'
+      },
+      {
+        src: 'images/prius/ev_switch/ev_mode04.jpg',
+        caption: 'Trimming the key tab — side 2',
+        step: 5,
+        description: 'Attempted the same technique on the opposite side. It works, but sanding is cleaner.'
+      },
+      {
+        src: 'images/prius/ev_switch/ev_mode05.jpg',
+        caption: 'Belt-sanded for a clean finish',
+        step: 6,
+        description: 'One pass on the belt sander gives a perfect fit — no more keying tabs.'
+      },
+      {
+        src: 'images/prius/ev_switch/ev_mode07.jpg',
+        caption: 'Button installed & illuminated ✨',
+        step: 7,
+        description: 'The factory JDM EV button installed and backlit. Clean, OEM-look result.'
+      },
+      {
+        src: 'images/prius/ev_switch/ev_indicator.jpg',
+        caption: 'Factory EV indicator on cluster',
+        step: 8,
+        description: 'What the EV indicator looks like on factory-equipped cars (far right of the cluster).'
+      }
+    ];
+
+    // === Render Gallery ===
+    const galleryEl = document.getElementById('gallery');
+    gallerySteps.forEach((item, i) => {
+      const card = document.createElement('div');
+      card.className = `gallery-thumb fade-up stagger-${Math.min(i + 1, 6)}`;
+      card.innerHTML = `
+        <img src="${item.src}" alt="${item.caption}" loading="lazy" />
+        <div class="overlay">
+          <div>
+            <span class="text-xs text-white/50 uppercase tracking-wider">Step ${item.step}</span>
+            <p class="text-sm text-white font-medium mt-0.5">${item.caption}</p>
+          </div>
+        </div>
+      `;
+      card.addEventListener('click', () => openLightbox(item.src, item.caption));
+      galleryEl.appendChild(card);
+    });
+
+    // === Lightbox ===
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+    // === Accordion ===
+    document.querySelectorAll('[data-accordion]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const content = btn.nextElementSibling;
+
+        // Close all others
+        document.querySelectorAll('[data-accordion]').forEach(other => {
+          other.setAttribute('aria-expanded', 'false');
+          other.nextElementSibling.classList.remove('open');
+        });
+
+        // Toggle clicked
+        if (!expanded) {
+          btn.setAttribute('aria-expanded', 'true');
+          content.classList.add('open');
+        }
+      });
+    });
+
+    // === Scroll Progress ===
+    const progressBar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = `${(scrollTop / docHeight) * 100}%`;
+    });
+
+    // === Navbar Scroll Effect ===
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // === Back to Top ===
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 600);
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // === Mobile Menu ===
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // === Intersection Observer for Fade-Up Animations ===
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // === Active Nav Link Highlighting ===
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+      });
+    });
+  </script>
+
+</body>
+</html>
